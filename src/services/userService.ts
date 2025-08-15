@@ -1,6 +1,9 @@
+import { userRepository } from "../repositories";
+
 export const getAllUsers = () => {
-  return [
-    { id: 1, name: "John Doe" },
-    { id: 2, name: "Jane Smith" },
-  ];
+  return userRepository.find();
+};
+
+export const getUserById = (id: string) => {
+  return userRepository.findOneBy({ id });
 };

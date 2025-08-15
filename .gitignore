@@ -1,8 +1,9 @@
-dist/
-node_modules/
-.env
-.DS_Store
-npm-debug.log
-yarn-error.log
-.vscode/
 .idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+dist/
+.DS_Store
+.env
