@@ -1,7 +1,13 @@
-import { IsString, MinLength } from "class-validator";
+import { IsString, IsUrl, IsUUID, MinLength } from "class-validator";
 
 export class CreateLinkDto {
   @IsString()
-  @MinLength(5)
-  originalUrl: string;
+  @MinLength(6)
+  @IsUrl()
+  originalLink: string;
+
+  @IsString()
+  @IsUUID()
+  @MinLength(6)
+  userId: string;
 }

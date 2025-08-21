@@ -7,10 +7,10 @@ export class Link {
   id: string;
 
   @Column({ type: "varchar", length: 511 })
-  originalUrl: string;
+  originalLink: string;
 
   @Column({ type: "varchar", length: 127, unique: true })
-  shortUrl: string;
+  shortLink: string;
 
   @ManyToOne(() => User, (user) => user.links, {
     onDelete: "CASCADE",

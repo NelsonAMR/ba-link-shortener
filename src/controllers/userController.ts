@@ -19,7 +19,10 @@ export const getOneById = async (req: Request, res: Response) => {
   res.json(user);
 };
 
-export const create = async (req: Request<CreateUserDto>, res: Response) => {
+export const create = async (
+  req: Request<{}, {}, CreateUserDto>,
+  res: Response,
+) => {
   const createUserDto = req.body;
 
   const newUser = await userService.create(createUserDto);

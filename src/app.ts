@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { userRoutes } from "./routes";
+import { linkRoutes, userRoutes } from "./routes";
 
 const app = express();
 
@@ -10,5 +10,6 @@ app.use(express.json());
 
 // Routes
 app.use("/users", userRoutes);
+app.use("/links", linkRoutes);
 
 export default app;
