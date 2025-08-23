@@ -16,4 +16,7 @@ export class Link {
     onDelete: "CASCADE",
   })
   user: User;
+
+  @Column({ type: "timestamp" })
+  expiresAt: Date;
 }

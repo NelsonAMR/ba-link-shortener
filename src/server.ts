@@ -1,6 +1,7 @@
 import { env } from "./config/env.js";
 import app from "./app.js";
 import { AppDataSource } from "./config/dbConfig";
+import "./utils/cleanupLinks";
 
 const PORT = env.API_PORT;
 

@@ -4,7 +4,6 @@ import { Request, Response, NextFunction } from "express";
 
 export const validateDto = <T extends object>(dtoClass: new () => T) => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    // Convertimos el body en la clase correspondiente
     const dtoInstance = plainToInstance(dtoClass, req.body);
 
     const errors = await validate(dtoInstance, {
@@ -23,7 +22,6 @@ export const validateDto = <T extends object>(dtoClass: new () => T) => {
       });
     }
 
-    // Tipamos body correctamente 👇
     req.body = dtoInstance as T;
 
     next();

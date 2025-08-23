@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { AppDataSource } from "../config/dbConfig";
-import { Link, User } from "../models";
+import { Link } from "../models";
+import { addWeeks, addMonths } from "date-fns";
 
 export const linkRepository = AppDataSource.getRepository(Link);
 
@@ -22,6 +23,9 @@ export const redirectToOriginalUrl = async (shortLink: string) => {
 
 export const createShortLink = async (originalLink: string, userId: string) => {
   const shortLink = nanoid(6);
+
+  const expiresAt = userId ? addMonths(new Date(), 3) : addWeeks(new Date(), 1);
+
   const link = linkRepository.create({
     originalLink,
     shortLink,
