@@ -37,3 +37,12 @@ export const createShortLink = async (
   const link = await linkService.createShortLink(originalLink, userId);
   res.status(201).json(link);
 };
+
+export const deleteLink = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).json({ message: "Link ID is required" });
+  }
+  await linkService.deleteLink(id);
+  res.status(204).send();
+};

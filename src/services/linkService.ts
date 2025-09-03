@@ -33,3 +33,7 @@ export const createShortLink = async (originalLink: string, userId: string) => {
   });
   return linkRepository.save(link);
 };
+
+export const deleteLink = (id: string) => {
+  return linkRepository.delete(id);
+};

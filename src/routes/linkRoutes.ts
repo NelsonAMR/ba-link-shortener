@@ -13,3 +13,4 @@ linkRoutes.post(
   validateDto(CreateLinkDto),
   linkController.createShortLink,
 );
+linkRoutes.delete("/:id", linkController.deleteLink);
