@@ -28,3 +28,26 @@ export const create = async (
   const newUser = await userService.create(createUserDto);
   res.status(201).json(newUser);
 };
+
+export const update = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const updateData = req.body;
+
+  if (!id || !isUUID(id)) {
+    return res.status(400).json({ message: "Invalid UUID format" });
+  }
+
+  const userUpdated = await userService.update(id, updateData);
+  res.status(204).json(userUpdated);
+};
+
+export const remove = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  if (!id || !isUUID(id)) {
+    return res.status(400).json({ message: "Invalid UUID format" });
+  }
+
+  await userService.remove(id);
+  res.status(204).send("User deleted successfully");
+};
