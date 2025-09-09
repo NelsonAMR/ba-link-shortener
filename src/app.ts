@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { linkRoutes, redirectRoutes, userRoutes } from "./routes";
+import { authorize } from "./middlewares/authorize";
 
 const app = express();
 
@@ -10,7 +11,7 @@ app.use(express.json());
 
 // Routes
 app.use("/", redirectRoutes);
-app.use("/users", userRoutes);
-app.use("/links", linkRoutes);
+app.use("/users", authorize, userRoutes);
+app.use("/links", authorize, linkRoutes);
 
 export default app;
